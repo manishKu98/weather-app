@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Container className="h-100">
+      <App />
+    </Container>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -2,7 +2,7 @@ import WeeklyData from "./weeklyData/weeklyData";
 import getWeatherData from "./config/helper";
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
 import Location from "./components/location/location";
 import FtoC from "./components/changeTemp/changeTemp";
 import CurrentTemp from "./components/currentTemp/currentTemp";
@@ -13,6 +13,7 @@ function App() {
   const [weather, setWeather] = useState([]);
   const [latLong, setLatLong] = useState({});
   const [current, setCurrent] = useState(0);
+  const [loading, setLoading] = useState(true);
   const [units, setUnits] = useState('imperial');
 
   useEffect(() => {
@@ -27,19 +28,33 @@ function App() {
     const { lat, long } = latLong;
     Object.keys(latLong).length && getWeatherData(lat, long, units)
       .then((res) => {
+        setLoading(false);
         setWeather(() => res.daily.filter((_, i) => i < 7));
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
       })
   }, [latLong, units]);
 
+  if (loading) {
+    return (
+      <Row className="justify-content-center align-items-center h-100">
+        <Spinner animation="border" variant="dark" />
+      </Row>
+    )
+  }
+
   if (!weather.length) {
-    return (<div>No Weather Data Found</div>)
+    return (
+      <Row className="justify-content-center align-items-center h-100">
+        No Weather Data Found
+      </Row>
+    );
   }
   const { lat, long } = latLong;
   return (
-    <Container>
+    <>
       <Row className='bg-image'>
 
         <Row className="m-3 d-flex justify-content-between">
@@ -67,7 +82,7 @@ function App() {
           })
         }
       </Row>
-    </Container>
+    </>
   )
 }
 export default App;
