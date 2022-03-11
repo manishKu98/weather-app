@@ -23,11 +23,11 @@ function Location({ datetime, lat, lon }) {
     }, [lat, lon]);
     const { name = '', country = '' } = cityName;
     return(
-        <Col >
-            <p className="text-dark m-0 h3"><i className='fas fa-map-marker-alt' style={{ fontSize: '25px' }} />
+        <Col>
+            <p className="text-dark h3"><i className='fas fa-map-marker-alt' style={{ fontSize: '25px' }} />
                 {` ${name}, ${country && regionNames.of(country)}`}
             </p>
-            <p className="text-dark m-0 h5">
+            <p className="text-dark lh-base h5">
                 {fullWeekName[dayIndex]}, {monthDate} {fullMonthName[monthIndex]} <Timer className="text-dark" />
             </p>        
         </Col>
