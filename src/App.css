@@ -1,0 +1,27 @@
+body {
+    background: linear-gradient(to right top, #24ff72, #2196f3);
+    background-repeat: no-repeat;
+    background-attachment:scroll;
+}
+.container-fluid {
+    padding: 0 !important;
+}   
+.bg-image {
+    background: white;
+    background: linear-gradient(to right bottom,  rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+    border-radius: 1rem;
+    width: 100%;
+    height: calc(100vh - 10rem);
+    margin: 0 !important;
+}
+.week-col {
+    height: 10rem;
+    cursor: pointer; 
+    border-radius: 4px;   
+}
+.hoverColor{
+    background: linear-gradient(to right bottom, rgba(226, 225, 225, 0.7), rgba(255, 255, 255, 0.1));
+    color: white;
+}
+
+
